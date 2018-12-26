@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Xmind2TestCase</title>
+    <link rel="shortcut icon" href="{{ url_for('static',filename='favicon.ico') }}" type="image/x-icon"/>
+    <link rel="stylesheet" type="text/css" media="all" href="{{ url_for('static',filename='css/pure-min.css') }}">
+    <link rel="stylesheet" type="text/css" media="all" href="{{ url_for('static',filename='css/custom.css') }}">
+</head>
+<body>
+<div class="splash-container">
+    <div class="splash">
+        <h1>
+            Xmind to TestCase
+        </h1>
+        <div class="splash-head">
+            <div class="select-xmind splash-subhead">
+                <form method="post" enctype="multipart/form-data">
+                    <label id="file-label" for="file">
+                        --> 点击这里选择您的XMind文件 <--
+                    </label>
+                    <input id="file" accept=".xmind" type="file" name="file" required/><br>
+                    <input type="submit" class="pure-button " value="开始转换"/>
+                </form>
+            </div>
+            {% if records %}
+                <table class="pure-table recent-xminds">
+                    <thead>
+                    <tr>
+                        <th width="60%">NAME</th>
+                        <th width="17%">TIME</th>
+                        <th>ACTIONS</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for record in records %}
+                        <tr>
+                            <td title="{{ record[1] }}"> {{ record[0] }}</td>
+                            <td>{{ record[2] }}</td>
+                            <td><a href="{{ url_for('uploaded_file',filename=record[1]) }}">XMIND</a> |
+                                <a href="{{ url_for('download_zentao_file',filename=record[1]) }}">CSV</a> |
+                                <a href="{{ url_for('download_testlink_file',filename=record[1]) }}">XML</a> |
+                                <a href="{{ url_for('preview_file',filename=record[1]) }}">PREVIEW</a> |
+                                <a href="{{ url_for('delete_file',filename=record[1], record_id=record[4]) }}">DELETE</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+
+                    </tbody>
+                </table>
+            {% else %}
+                <p>Welcome! Xmind2TestCase is a tool to help you convert xmind file to testlink xml file, and then you
+                    will be able to import the xml into TestLink. Are you ready? Upload your xmind file now.</p>
+            {% endif %}
+        </div>
+        <div class="footer-home">
+            Powered by <a href="https://www.xmind.cn/">Xmind</a> |
+            Copyright &copy; 2018 <a href="https://conf.umlife.net/pages/viewpage.action?pageId=51650689">You Mi QA</a>
+        </div>
+    </div>
+
+</div>
+
+<script>
+    document.getElementById("file").addEventListener("change", function () {
+        if (this.value) {
+            document.getElementById("file-label").innerHTML = this.value.split("\\").pop();
+        }
+    });
+
+</script>
+
+
+</body>
+</html>

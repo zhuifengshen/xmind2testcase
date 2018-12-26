@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ name }} | Xmind2TestCase Preview</title>
+    <link rel="shortcut icon" href="{{ url_for('static',filename='favicon.ico') }}" type="image/x-icon"/>
+    <link rel="stylesheet" type="text/css" media="all" href="{{ url_for('static',filename='css/pure-min.css') }}">
+    <link rel="stylesheet" type="text/css" media="all" href="{{ url_for('static',filename='css/custom.css') }}">
+</head>
+<body>
+<div class="header">
+    <h1>{{ name }} - Preview</h1>
+    <h2>TestSuites: {{ suite_count }} / TestCases: {{ suite | length }}
+        / <a href="{{ url_for("download_zentao_file",filename= name) }}">Get Zentao csv</a>
+        / <a href="{{ url_for("download_testlink_file",filename= name) }}">Get TestLink XML</a>
+        / <a href="{{ url_for("index") }}">Go Back</a></h2>
+</div>
+<table class="pure-table tests-table">
+    <thead>
+    <tr>
+        <th width="5%">#</th>
+        <th width="10%">Suite</th>
+        <th>Title</th>
+        <th width="200px">Attributes</th>
+        <th width="23%">Steps</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for test in suite %}
+        <tr>
+            <td>{{ loop.index }}</td>
+            <td>{{ test.suite }}</td>
+            <td {% if test.name|length>100 %}class="long-name" {% endif %}>{{ test.name }}
+                {% if test.name|length>100 %}
+                    <span class="long-name-info">Warn: test name might be too long: {{ test.name|length }}!</span>
+                {% endif %}
+            </td>
+            <td>
+                <div class="tag-success tooltip">
+                    Priority {{ test.importance }}
+                    <span class="tooltiptext">Priority {{ test.importance }} </span>
+                </div>
+                {% if test.preconditions %}
+                    <div class="pure-button tag-info tooltip">PreCond.
+                        <p class="tooltiptext">
+                            <b>Preconditions:</b> <br>
+                            {{ test.preconditions | replace('\n','<br>') |safe }}
+                        </p></div>
+                {% endif %}
+                {% if test.summary %}
+                    <div class="pure-button tag-warn tooltip">Summary
+                        <p class="tooltiptext">
+                            <b>Summary:</b> <br>
+                            {{ test.summary | replace('\n','<br>') |safe }}
+                        </p></div>
+                {% endif %}
+            <td>
+                {% if test.steps %}
+                    <ol>
+                        {% for step in test.steps %}
+                            <li>{{ step.actions }}
+                                {% if step.expectedresults %}
+                                    <ul>
+                                        <li>{{ step.expectedresults }}</li>
+                                    </ul>
+                                {% endif %}
+                            </li>
+                        {% endfor %}
+                    </ol>
+                {% endif %}
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+<div class="footer">
+        Powered by <a href="https://www.xmind.cn/">Xmind</a> |
+        Copyright &copy; 2018 <a href="https://conf.umlife.net/pages/viewpage.action?pageId=51650689">You Mi QA</a>
+</div>
+</body>
+</html>
