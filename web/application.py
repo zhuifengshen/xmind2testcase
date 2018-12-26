@@ -17,22 +17,29 @@ from flask import Flask, request, send_from_directory, g, render_template, abort
 
 # log handler
 formatter = logging.Formatter('%(asctime)s  %(name)s  %(levelname)s  [%(module)s - %(funcName)s]: %(message)s')
-handler = logging.FileHandler('running.log', encoding='UTF-8')
-handler.setFormatter(formatter)
+file_handler = logging.FileHandler('running.log', encoding='UTF-8')
+file_handler.setFormatter(formatter)
+file_handler.setLevel(logging.DEBUG)
+stream_handler = logging.StreamHandler()
+stream_handler.setFormatter(formatter)
+stream_handler.setLevel(logging.INFO)
 # xmind to testcase logger
 root_logger = logging.getLogger()
+root_logger.addHandler(file_handler)
+root_logger.addHandler(stream_handler)
 root_logger.setLevel(logging.DEBUG)
-root_logger.addHandler(handler)
 # flask and werkzeug logger
 werkzeug_logger = logging.getLogger('werkzeug')
+werkzeug_logger.addHandler(file_handler)
+werkzeug_logger.addHandler(stream_handler)
 werkzeug_logger.setLevel(logging.DEBUG)
-werkzeug_logger.addHandler(handler)
 
 # global variable
-UPLOAD_FOLDER = './uploads'
+here = os.path.abspath(os.path.dirname(__file__))
+UPLOAD_FOLDER = os.path.join(here, 'uploads')
 ALLOWED_EXTENSIONS = ['xmind']
 DEBUG = True
-DATABASE = './data.db3'
+DATABASE = os.path.join(here, 'data.db3')
 HOST = '0.0.0.0'
 
 # flask app

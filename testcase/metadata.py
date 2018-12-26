@@ -4,13 +4,14 @@
 """
 testlink.testlink
 """
+import logging
 
 
 class TestSuite(object):
 
     def __init__(self, name='', details='', testcase_list=None, sub_suites=None):
         """
-        TestSuite (TODO(devin): there is an infinite recursive reference problem with initializing an empty list)
+        TestSuite
         :param name: test suite name
         :param details: test suite detail infomation
         :param testcase_list: test case list
@@ -37,6 +38,7 @@ class TestSuite(object):
             for case in self.testcase_list:
                 data['testcase_list'].append(case.to_dict())
 
+        logging.info('testsuite: %s', data)
         return data
 
 
@@ -82,6 +84,7 @@ class TestCase(object):
             for step in self.steps:
                 data['steps'].append(step.to_dict())
 
+        logging.info('testcase: %s', data)
         return data
 
 
@@ -107,5 +110,7 @@ class TestStep(object):
             'expectedresults': self.expectedresults,
             'execution_type': self.execution_type
         }
+
+        logging.info('teststep: %s', data)
         return data
 

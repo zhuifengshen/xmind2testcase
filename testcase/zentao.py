@@ -15,6 +15,7 @@ Zentao official document about import CSV testcase file: https://www.zentao.net/
 def xmind_to_zentao_csv_file(xmind_file):
     """Convert XMind file to a zentao csv file"""
     xmind_file = get_absolute_path(xmind_file)
+    logging.info('Start converting XMind file(%s) to zentao file...', xmind_file)
     testcases = get_xmind_testcase_dict_data_list(xmind_file)
 
     fileheader = ["所属模块", "用例标题", "前置条件", "步骤", "预期", "关键词", "优先级", "用例类型", "适用阶段"]
@@ -25,13 +26,13 @@ def xmind_to_zentao_csv_file(xmind_file):
 
     zentao_file = xmind_file[:-6] + '.csv'
     if os.path.exists(zentao_file):
-        logging.info('the zentao csv file already exists, return it directly: %s', zentao_file)
+        logging.info('The zentao csv file already exists, return it directly: %s', zentao_file)
         return zentao_file
 
     with open(zentao_file, 'w', encoding='utf8') as f:
         writer = csv.writer(f)
         writer.writerows(zentao_testcase_rows)
-        logging.info('convert XMind file(%s) to a zentao csv file(%s) successfully!', xmind_file, zentao_file)
+        logging.info('Convert XMind file(%s) to a zentao csv file(%s) successfully!', xmind_file, zentao_file)
 
     return zentao_file
 

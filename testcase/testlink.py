@@ -18,6 +18,7 @@ Convert XMind fie to TestLink testcase xml file
 def xmind_to_testlink_xml_file(xmind_file, is_all_sheet=True):
     """Convert a XMind sheet to a testlink xml file"""
     xmind_file = get_absolute_path(xmind_file)
+    logging.info('Start converting XMind file(%s) to testlink file...', xmind_file)
     testsuites = get_xmind_testsuites(xmind_file)
     if not is_all_sheet and testsuites:
         testsuites = [testsuites[0]]

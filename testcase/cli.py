@@ -26,7 +26,7 @@ Example:
 """
 
 
-logging.basicConfig(level=logging.DEBUG,
+logging.basicConfig(level=logging.INFO,
                     format='%(asctime)s  %(name)s  %(levelname)s  [%(module)s - %(funcName)s]: %(message)s',
                     datefmt='%Y/%m/%d %H:%M:%S')
 
