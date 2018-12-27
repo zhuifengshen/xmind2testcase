@@ -78,7 +78,10 @@ setup(
     url=about['__url__'],
     license=about['__license__'],
     packages=find_packages(exclude=['tests', 'test.*', 'docs']),  # custom
-    package_data={'': ['README.md']},  # custom
+    package_data={  # custom
+        '': ['README.md'],
+        'web': ['static/*', 'templates/*', 'schema.sql'],
+    },
     install_requires=install_requires,
     extras_require={},
     python_requires='>=3.0, <4',  # custom
