@@ -4,7 +4,6 @@
 """
 testlink.testlink
 """
-import logging
 
 
 class TestSuite(object):
@@ -38,7 +37,6 @@ class TestSuite(object):
             for case in self.testcase_list:
                 data['testcase_list'].append(case.to_dict())
 
-        logging.info('testsuite: %s', data)
         return data
 
 
@@ -84,7 +82,6 @@ class TestCase(object):
             for step in self.steps:
                 data['steps'].append(step.to_dict())
 
-        logging.info('testcase: %s', data)
         return data
 
 
@@ -111,6 +108,5 @@ class TestStep(object):
             'execution_type': self.execution_type
         }
 
-        logging.info('teststep: %s', data)
         return data
 
