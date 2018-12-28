@@ -526,7 +526,7 @@ Output:
 python3 setup.py pypi
 ```
 
-![upload_pypi]()
+![upload_pypi](webtool/static/guide/pypi_upload.png)
 
 
 ### 五、致谢
