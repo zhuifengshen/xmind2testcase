@@ -4,7 +4,7 @@ import json
 import os
 import xmind
 import logging
-from testcase.parser import xmind_to_testsuites
+from xmind2testcase.parser import xmind_to_testsuites
 
 
 def get_absolute_path(path):
@@ -23,7 +23,7 @@ def get_absolute_path(path):
 
 
 def get_xmind_testsuites(xmind_file):
-    """Load the XMind file and parse to `testcase.metadata.TestSuite` list"""
+    """Load the XMind file and parse to `xmind2testcase.metadata.TestSuite` list"""
     xmind_file = get_absolute_path(xmind_file)
     workbook = xmind.load(xmind_file)
     xmind_content_dict = workbook.getData()
@@ -37,7 +37,7 @@ def get_xmind_testsuites(xmind_file):
         return []
 
 
-def get_xmind_testsuite_dict_data_list(xmind_file):
+def get_xmind_testsuite_list(xmind_file):
     """Load the XMind file and get all testsuite in it
 
     :param xmind_file: the target XMind file
@@ -55,7 +55,7 @@ def get_xmind_testsuite_dict_data_list(xmind_file):
     return testsuites
 
 
-def get_xmind_testcase_dict_data_list(xmind_file):
+def get_xmind_testcase_list(xmind_file):
     """Load the XMind file and get all testcase in it
 
     :param xmind_file: the target XMind file
@@ -83,7 +83,7 @@ def xmind_testsuite_to_json_file(xmind_file):
     """Convert XMind file to a testsuite json file"""
     xmind_file = get_absolute_path(xmind_file)
     logging.info('Start converting XMind file(%s) to testsuites json file...', xmind_file)
-    testsuites = get_xmind_testsuite_dict_data_list(xmind_file)
+    testsuites = get_xmind_testsuite_list(xmind_file)
     testsuite_json_file = xmind_file[:-6] + '_testsuite.json'
 
     if os.path.exists(testsuite_json_file):
@@ -101,7 +101,7 @@ def xmind_testcase_to_json_file(xmind_file):
     """Convert XMind file to a testcase json file"""
     xmind_file = get_absolute_path(xmind_file)
     logging.info('Start converting XMind file(%s) to testcases json file...', xmind_file)
-    testcases = get_xmind_testcase_dict_data_list(xmind_file)
+    testcases = get_xmind_testcase_list(xmind_file)
     testcase_json_file = xmind_file[:-6] + '.json'
 
     if os.path.exists(testcase_json_file):

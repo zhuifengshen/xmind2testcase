@@ -5,9 +5,9 @@ import os
 from io import BytesIO
 from xml.dom import minidom
 from xml.sax.saxutils import escape
-from testcase import const
-from testcase.parser import config
-from testcase.utils import get_xmind_testsuites, get_absolute_path
+from xmind2testcase import const
+from xmind2testcase.parser import config
+from xmind2testcase.utils import get_xmind_testsuites, get_absolute_path
 from xml.etree.ElementTree import Element, SubElement, ElementTree, Comment
 
 """

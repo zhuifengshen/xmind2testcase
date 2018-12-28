@@ -1,11 +1,11 @@
-# Xmind2TestCase 使用指南
+# XMind2TestCase 使用指南
+
 
 ### 一、XMind测试用例通用模板
 
 #### 1、简单模板示例
 
 ![模板示例1](testcase_template_demo1.png)
-<img src="testcase_template_demo1.png" width="60" />
 
 #### 2、简单模板示例解析结果
 
@@ -15,7 +15,7 @@
 
 ![解析规则](xmind_testcase_template_rule.png)
 
-注意，注意，注意，重要的事情说三遍！
+**注意，注意，注意，重要的事情说三遍！！！**
 
 第六条规则，我们使用标注**优先级图标**作为"测试标题"与"测试步骤"界线，如果解析过程没有遇到**优先级图标**，则TestSuite后面的子主题链作为一条测试用例。
 一条测试用例支持只有标题，没有测试步骤和预期结果，因为实际测试过程中，我们常常通过用例标题就可以明确测试点了。
@@ -29,6 +29,7 @@
 #### 5、多级模板解析结果
 
 ![解析结果2](demo2_convert_result.png)
+
 
 ### 二、导入TestLink
 
@@ -50,6 +51,7 @@ xmind2testlink XMind测试用例模板.xmind -xml  ==> XMind测试用例模板.x
 
 ![testlink_testcase_view](testlink_testcase_view.png)
 
+
 ### 三、导入禅道（ZenTao)
 
 #### 1、将XMind用例文件解析为禅道导入文件
@@ -70,6 +72,7 @@ xmind2testcase XMind测试用例模板.xmind -csv  ==> XMind测试用例模板.c
 不过，还是建议创建好模块名，以便后续用例管理，流程如下：
 
 ![zentao_import_file](zentao_import_file.png)
+
 - 在"维护模块"中创建好模块名，然后通过导出模板文件（GBK)，就可以查看模块名对应的ID；
 - 如果导入时，没有事先创建好模块名，就不会显示上图中方框中的模块名信息；
 - 导入的用例文件使用的是UTF-8编码；
@@ -77,6 +80,7 @@ xmind2testcase XMind测试用例模板.xmind -csv  ==> XMind测试用例模板.c
 填写了模块ID的XMind用例文件，示例如下：
 
 ![zentao_testcase_template](zentao_testcase_template.png)
+
 
 ### 四、使用Web转换工具
 

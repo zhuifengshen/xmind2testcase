@@ -8,7 +8,7 @@ from setuptools import setup, find_packages, Command
 
 about = {}
 here = os.path.abspath(os.path.dirname(__file__))
-with io.open(os.path.join(here, 'testcase', '__about__.py'), encoding='utf-8') as f:  # custom
+with io.open(os.path.join(here, 'xmind2testcase', '__about__.py'), encoding='utf-8') as f:  # custom
     exec(f.read(), about)
 
 with io.open('README.md', encoding='utf-8') as f:
@@ -80,7 +80,7 @@ setup(
     packages=find_packages(exclude=['tests', 'test.*', 'docs']),  # custom
     package_data={  # custom
         '': ['README.md'],
-        'web': ['static/*', 'templates/*', 'schema.sql'],
+        'webtool': ['static/*', 'templates/*', 'schema.sql'],
     },
     install_requires=install_requires,
     extras_require={},
@@ -92,7 +92,7 @@ setup(
     ],
     entry_points={  # custom
         'console_scripts': [
-            'xmind2testcase=testcase.cli:cli_main',
+            'xmind2testcase=xmind2testcase.cli:cli_main',
         ]
     },
     cmdclass={

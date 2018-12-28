@@ -9,9 +9,9 @@ from contextlib import closing
 from os.path import join, exists
 from werkzeug.contrib.fixers import ProxyFix
 from werkzeug.utils import secure_filename
-from testcase.zentao import xmind_to_zentao_csv_file
-from testcase.testlink import xmind_to_testlink_xml_file
-from testcase.utils import get_xmind_testsuites, get_xmind_testcase_dict_data_list
+from xmind2testcase.zentao import xmind_to_zentao_csv_file
+from xmind2testcase.testlink import xmind_to_testlink_xml_file
+from xmind2testcase.utils import get_xmind_testsuites, get_xmind_testcase_list
 from flask import Flask, request, send_from_directory, g, render_template, abort, redirect, url_for
 
 here = os.path.abspath(os.path.dirname(__file__))
@@ -270,7 +270,7 @@ def preview_file(filename):
     for suite in testsuites:
         suite_count += len(suite.sub_suites)
 
-    testcases = get_xmind_testcase_dict_data_list(full_path)
+    testcases = get_xmind_testcase_list(full_path)
 
     return render_template('preview.html', name=filename, suite=testcases, suite_count=suite_count)
 

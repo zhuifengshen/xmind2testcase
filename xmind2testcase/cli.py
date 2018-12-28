@@ -2,10 +2,10 @@
 # _*_ coding:utf-8 _*_
 import logging
 import sys
-from testcase.zentao import xmind_to_zentao_csv_file
-from testcase.testlink import xmind_to_testlink_xml_file
-from testcase.utils import get_absolute_path, xmind_testcase_to_json_file
-from web.application import launch
+from xmind2testcase.zentao import xmind_to_zentao_csv_file
+from xmind2testcase.testlink import xmind_to_testlink_xml_file
+from xmind2testcase.utils import get_absolute_path, xmind_testcase_to_json_file
+from webtool.application import launch
 
 """
 A tool to parse xmind file into testcase file, which will help you generate a testlink recognized

@@ -3,7 +3,7 @@
 import csv
 import logging
 import os
-from testcase.utils import get_xmind_testcase_dict_data_list, get_absolute_path
+from xmind2testcase.utils import get_xmind_testcase_list, get_absolute_path
 
 """
 Convert XMind fie to Zentao testcase csv file 
@@ -16,7 +16,7 @@ def xmind_to_zentao_csv_file(xmind_file):
     """Convert XMind file to a zentao csv file"""
     xmind_file = get_absolute_path(xmind_file)
     logging.info('Start converting XMind file(%s) to zentao file...', xmind_file)
-    testcases = get_xmind_testcase_dict_data_list(xmind_file)
+    testcases = get_xmind_testcase_list(xmind_file)
 
     fileheader = ["所属模块", "用例标题", "前置条件", "步骤", "预期", "关键词", "优先级", "用例类型", "适用阶段"]
     zentao_testcase_rows = [fileheader]
