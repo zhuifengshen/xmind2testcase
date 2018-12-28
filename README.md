@@ -1,6 +1,6 @@
-# xmind2testcase
+# XMind2TestCase
 
-**xmind2testcase** 工具提供了一个高效测试用例设计的解决方案！
+**XMind2TestCase** 工具提供了一个高效测试用例设计的解决方案！
 
 软件质量测试过程中，最重要、最核心就是测试用例的设计，也是测试童鞋、测试团队日常投入最多时间的工作内容之一。
 
@@ -25,12 +25,12 @@
 
 那么问题来了，我们能不能将它们各自优点合在一起呢？这样不就可以提升我们的效率了！
 
-于是，这时候 **xmind2testcase** 就应运而生了，该工具基于 Python 实现，通过制定**测试用例通用模板**，
+于是，这时候 **XMind2TestCase** 就应运而生了，该工具基于 Python 实现，通过制定**测试用例通用模板**，
 然后使用 **[XMind](https://www.xmind.cn/)** 这款广为流传且开源的思维导图工具进行用例设计。
 其中制定**测试用例通用模板**是一个非常核心的步骤（下文有相关介绍），有了通用的测试用例模板，我们就可以在 XMind 文件上解析并提取出测试用例所需的基本信息，
 然后合成常见**测试用例管理系统**所需的**用例导入文件**。这样就将 **XMind 设计测试用例的便利**与**常见测试用例系统的高效管理**结合起来了！
 
-当前 **xmind2testcase** 已实现从 XMind 文件到 TestLink 和 Zentao(禅道) 两大常见用例管理系统的测试用例转换，同时也提供 XMind 文件解析后的两种数据接口
+当前 **XMind2TestCase** 已实现从 XMind 文件到 TestLink 和 Zentao(禅道) 两大常见用例管理系统的测试用例转换，同时也提供 XMind 文件解析后的两种数据接口
 （TestSuites、TestCases两种级别的JSON数据），方便快速与其他测试用例管理系统打通。
 
 
@@ -106,7 +106,7 @@ python3 setup.py pypi
 
 
 ### 五、致谢
-**xmind2testcase** 工具的产生，受益于以下四个开源项目，并在此基础上扩展、优化，受益匪浅，感恩！
+**XMind2TestCase** 工具的产生，受益于以下四个开源项目，并在此基础上扩展、优化，受益匪浅，感恩！
 - 1、**[XMind](https://github.com/zhuifengshen/xmind)**：XMind思维导图创建、解析、更新的一站式解决方案(Python实现)！  
 - 2、**[xmind2testlink](https://github.com/tobyqin/xmind2testlink)**：践行了XMind通用测试用例模板设计思路，同时提供了Web转换工具！
 - 3、**[TestLink](http://www.testlink.org/)**：提供了完整的测试用例管理流程和文档；
@@ -115,3 +115,29 @@ python3 setup.py pypi
 得益于开源，也将坚持开源，并为努力开源贡献自己的点滴之力。后续，将继续根据实际项目需要，定期进行更新维护，欢迎大伙的使用和意见反馈，谢谢！
 
 （如果本项目对你有帮助的话，也欢迎 _**star**_ ）
+
+### LICENSE
+```
+MIT License
+
+Copyright (c) 2019 Devin https://zhangchuzhao.site
+Copyright (c) 2017 Toby Qin
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+```

@@ -14,10 +14,11 @@ from testcase.testlink import xmind_to_testlink_xml_file
 from testcase.utils import get_xmind_testsuites, get_xmind_testcase_dict_data_list
 from flask import Flask, request, send_from_directory, g, render_template, abort, redirect, url_for
 
-
+here = os.path.abspath(os.path.dirname(__file__))
+log_file = os.path.join(here, 'running.log')
 # log handler
 formatter = logging.Formatter('%(asctime)s  %(name)s  %(levelname)s  [%(module)s - %(funcName)s]: %(message)s')
-file_handler = logging.FileHandler('running.log', encoding='UTF-8')
+file_handler = logging.FileHandler(log_file, encoding='UTF-8')
 file_handler.setFormatter(formatter)
 file_handler.setLevel(logging.DEBUG)
 stream_handler = logging.StreamHandler()
@@ -35,7 +36,6 @@ werkzeug_logger.addHandler(stream_handler)
 werkzeug_logger.setLevel(logging.DEBUG)
 
 # global variable
-here = os.path.abspath(os.path.dirname(__file__))
 UPLOAD_FOLDER = os.path.join(here, 'uploads')
 ALLOWED_EXTENSIONS = ['xmind']
 DEBUG = True
@@ -61,11 +61,13 @@ def init_db():
 
 
 def init():
+    app.logger.info('Start initializing the database...')
     if not exists(UPLOAD_FOLDER):
         os.mkdir(UPLOAD_FOLDER)
 
     if not exists(DATABASE):
         init_db()
+    app.logger.info('Congratulations! the xmind2testcase webtool database has initialized successfully!')
 
 
 @app.before_request
