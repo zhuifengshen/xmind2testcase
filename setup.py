@@ -80,7 +80,7 @@ setup(
     packages=find_packages(exclude=['tests', 'test.*', 'docs']),  # custom
     package_data={  # custom
         '': ['README.md'],
-        'webtool': ['static/*', 'templates/*', 'schema.sql'],
+        'webtool': ['static/*', 'static/css/*', 'static/guide/*', 'templates/*', 'schema.sql'],
     },
     install_requires=install_requires,
     extras_require={},
