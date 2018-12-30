@@ -30,7 +30,7 @@
 
 于是，这时候 **XMind2TestCase** 就应运而生了，该工具基于 Python 实现，通过制定**测试用例通用模板**，
 然后使用 **[XMind](https://www.xmind.cn/)** 这款广为流传且开源的思维导图工具进行用例设计。
-其中制定**测试用例通用模板**是一个非常核心的步骤（具体请看[使用指南](webtool/static/guide/index.md)），有了通用的测试用例模板，我们就可以在 XMind 文件上解析并提取出测试用例所需的基本信息，
+其中制定**测试用例通用模板**是一个非常核心的步骤（具体请看[使用指南](https://github.com/zhuifengshen/xmind2testcase/blob/master/webtool/static/guide/index.md)），有了通用的测试用例模板，我们就可以在 XMind 文件上解析并提取出测试用例所需的基本信息，
 然后合成常见**测试用例管理系统**所需的**用例导入文件**。这样就将 **XMind 设计测试用例的便利**与**常见测试用例系统的高效管理**结合起来了！
 
 当前 **XMind2TestCase** 已实现从 XMind 文件到 TestLink 和 Zentao(禅道) 两大常见用例管理系统的测试用例转换，同时也提供 XMind 文件解析后的两种数据接口
@@ -41,19 +41,19 @@
 
 #### 1、Web工具示例
 
-![webtool](webtool/static/guide/webtool.png)
+![webtool](https://raw.githubusercontent.com/zhuifengshen/xmind2testcase/master/webtool/static/guide/webtool.png)
 
 #### 2、转换后用例预览
 
-![testcase_preview](webtool/static/guide/xmind_to_testcase_preview.png)
+![testcase_preview](https://raw.githubusercontent.com/zhuifengshen/xmind2testcase/master/webtool/static/guide/xmind_to_testcase_preview.png)
 
 #### 3、TestLink导入结果示例
 
-![testlink](webtool/static/guide/testlink.png)
+![testlink](https://raw.githubusercontent.com/zhuifengshen/xmind2testcase/master/webtool/static/guide/testlink.png)
 
 #### 4、禅道（ZenTao）导入结果示例
 
-![zentao](webtool/static/guide/zentao_import_result.png)
+![zentao](https://raw.githubusercontent.com/zhuifengshen/xmind2testcase/master/webtool/static/guide/zentao_import_result.png)
 
 
 ### 三、安装方式
@@ -84,7 +84,7 @@ Example:
 
 #### 2、使用Web界面
 
-![web_tool_cli](webtool/static/guide/webtool_cli.png)
+![web_tool_cli](https://raw.githubusercontent.com/zhuifengshen/xmind2testcase/master/webtool/static/guide/webtool_cli.png)
 
 ```
 Usage:
@@ -141,7 +141,7 @@ if __name__ == '__main__':
 
 #### 4、XMind用例文件转为JSON数据
 
-![xmind_testcase_demo](webtool/static/guide/xmind_testcase_demo.png)
+![xmind_testcase_demo](https://raw.githubusercontent.com/zhuifengshen/xmind2testcase/master/webtool/static/guide/xmind_testcase_demo.png)
 
 ##### （1）转为测试用例JSON数据
 
@@ -515,7 +515,7 @@ Output:
   }
 ]
 ```
-具体参考：[xmind_testcase_demo.json](docs/xmind_testcase_demo.json)
+具体参考：[xmind_testcase_demo.json](https://github.com/zhuifengshen/xmind2testcase/blob/master/docs/xmind_testcase_demo.json)
 
 
 ### 四、自动化发布：一键打 Tag 并上传至 PYPI 
@@ -526,7 +526,7 @@ Output:
 python3 setup.py pypi
 ```
 
-![upload_pypi](webtool/static/guide/pypi_upload.png)
+![upload_pypi](https://raw.githubusercontent.com/zhuifengshen/xmind2testcase/master/webtool/static/guide/pypi_upload.png)
 
 
 ### 五、致谢
@@ -538,7 +538,7 @@ python3 setup.py pypi
 - 4、**[禅道开源版(ZenTao)](https://www.zentao.net/)**：提供了完整的项目管理流程、文档和用户交流释疑群；
 
 得益于开源，也将坚持开源，并为努力开源贡献自己的点滴之力。后续，将继续根据实际项目需要，定期进行更新维护，
-欢迎大伙的[使用](webtool/static/guide/index.md)和[意见反馈](https://github.com/zhuifengshen/xmind2testcase/issues/new)，谢谢！
+欢迎大伙的[使用](https://github.com/zhuifengshen/xmind2testcase/blob/master/webtool/static/guide/index.md)和[意见反馈](https://github.com/zhuifengshen/xmind2testcase/issues/new)，谢谢！
 
 （如果本项目对你有帮助的话，也欢迎 _**star**_ ）
 
