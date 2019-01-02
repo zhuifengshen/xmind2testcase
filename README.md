@@ -1,6 +1,6 @@
 # XMind2TestCase
 
-> **XMind2TestCase** 工具提供了一个高效测试用例设计的解决方案！
+> **XMind2TestCase** 工具，提供了一个高效测试用例设计的解决方案！
 
 
 ### 一、背景
@@ -542,7 +542,7 @@ python3 setup.py pypi
 
 （如果本项目对你有帮助的话，也欢迎 _**[star](https://github.com/zhuifengshen/xmind2testcase)**_ ）
 
-<img align="middle" src="https://raw.githubusercontent.com/zhuifengshen/zhangchuzhao/gh-pages/img/qa_qrcode_258.jpg" />
+![QA之禅](http://upload-images.jianshu.io/upload_images/139581-27c6030ba720846f.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 ### LICENSE
 ```
