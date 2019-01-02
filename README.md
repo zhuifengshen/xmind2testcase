@@ -540,8 +540,9 @@ python3 setup.py pypi
 得益于开源，也将坚持开源，并为努力开源贡献自己的点滴之力。后续，将继续根据实际项目需要，定期进行更新维护，
 欢迎大伙的[使用](https://github.com/zhuifengshen/xmind2testcase/blob/master/webtool/static/guide/index.md)和[意见反馈](https://github.com/zhuifengshen/xmind2testcase/issues/new)，谢谢！
 
-（如果本项目对你有帮助的话，也欢迎 _**star**_ ）
+（如果本项目对你有帮助的话，也欢迎 _**[star](https://github.com/zhuifengshen/xmind2testcase)**_ ）
 
+<img align="middle" src="https://raw.githubusercontent.com/zhuifengshen/zhangchuzhao/gh-pages/img/qa_qrcode_258.jpg" />
 
 ### LICENSE
 ```
