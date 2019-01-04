@@ -292,10 +292,11 @@ def app_error(e):
 
 
 def launch(host='127.0.0.1', debug=True, port=5001):
-    init()
     app.run(host=host, debug=debug, port=port)
 
 
+init()  # initializing the database
+
+
 if __name__ == '__main__':
-    init()
     app.run(HOST, debug=DEBUG, port=5001)
