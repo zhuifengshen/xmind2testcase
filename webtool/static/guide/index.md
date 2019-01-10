@@ -30,6 +30,14 @@
 
 ![解析结果2](demo2_convert_result.png)
 
+#### 6、支持标识用例执行结果模板示例(新功能）
+
+![标识执行结果](testcase_template_demo3.png)
+
+#### 7、支持标识用例执行结果模板规则（增加标识用例结果规则）
+
+![解析规则](xmind_testcase_template_rule1.png)
+
 
 ### 二、导入TestLink
 

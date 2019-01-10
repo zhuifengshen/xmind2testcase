@@ -143,7 +143,7 @@ if __name__ == '__main__':
 
 ![xmind_testcase_demo](https://raw.githubusercontent.com/zhuifengshen/xmind2testcase/master/webtool/static/guide/xmind_testcase_demo.png)
 
-##### （1）转为测试用例JSON数据
+##### （1）转为TestCase JSON数据
 
 ```
 from xmind2testcase.utils import get_xmind_testcase_list
@@ -274,7 +274,14 @@ Output:
 ]
 ```
 
-##### （2）转为测试集JSON数据
+测试用例数据增加执行结果字段：result，示例如下：
+
+![测试用例数据](webtool/static/guide/testcase_json_demo.png)
+
+详情查看[使用指南](webtool/static/guide/index.md)，参考示例：[testcase json](docs/xmind_to_testcase_json.json)
+
+
+##### （2）转为TestSuite JSON数据
 
 ```
 from xmind2testcase.utils import get_xmind_testsuite_list
@@ -416,6 +423,13 @@ Output:
 ]
 ```
 
+TestSuite增加执行结果统计字段：statistics，示例如下：
+
+![测试用例数据](webtool/static/guide/testsuite_json_demo.png)
+
+参考示例：[testsuite json](docs/xmind_to_testsuite_json.json)
+
+
 ##### （3）XMind文件转换为JSON数据
 
 以上（1）TestCase数据、（2）TestSuite数据的获取，其实是基于**[XMind](https://github.com/zhuifengshen/xmind)**这个工具，对XMind文件进行解析和数据提取，然后转换而来。
@@ -529,7 +543,29 @@ python3 setup.py pypi
 ![upload_pypi](https://raw.githubusercontent.com/zhuifengshen/xmind2testcase/master/webtool/static/guide/pypi_upload.png)
 
 
-### 五、致谢
+### 五、CHANGELOG
+
+```
+v1.0.0
+1、XMind用例模板定义和解析；
+2、XMind用例转换为TestLink用例文件；
+
+v1.1.0
+1、XMind用例文件转换为禅道用例文件；
+2、添加一键上传PYPI功能；
+
+v1.2.0
+1、添加Web工具进行用例转换；
+2、添加用户使用指南；
+
+v1.3.0
+1、XMind中支持标识测试用例执行结果；
+2、TestCase、TestSuite中添加用例执行结果统计数据；
+3、完善用户使用指南；
+```
+
+
+### 六、致谢
 **XMind2TestCase** 工具的产生，受益于以下四个开源项目，并在此基础上扩展、优化，受益匪浅，感恩！
 
 - 1、**[XMind](https://github.com/zhuifengshen/xmind)**：XMind思维导图创建、解析、更新的一站式解决方案(Python实现)！  
@@ -543,6 +579,7 @@ python3 setup.py pypi
 （如果本项目对你有帮助的话，也欢迎 _**[star](https://github.com/zhuifengshen/xmind2testcase)**_ ）
 
 ![QA之禅](http://upload-images.jianshu.io/upload_images/139581-27c6030ba720846f.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
 
 ### LICENSE
 ```

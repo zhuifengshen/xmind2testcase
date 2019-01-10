@@ -26,10 +26,10 @@ def xmind_to_testsuites(xmind_content_dict):
         else:
             logging.warning('This is a blank sheet(%s), should have at least 1 sub topic(test suite)', sheet['title'])
             continue
-        root_suite = sheet_to_suite(root_topic)
-        # root_suite.sheet_name = sheet['title']  # root testsuite has a sheet_name attribute
-        logging.debug('sheet(%s) parsing complete: %s', sheet['title'], root_suite.to_dict())
-        suites.append(root_suite)
+        suite = sheet_to_suite(root_topic)
+        # suite.sheet_name = sheet['title']  # root testsuite has a sheet_name attribute
+        logging.debug('sheet(%s) parsing complete: %s', sheet['title'], suite.to_dict())
+        suites.append(suite)
 
     return suites
 
@@ -59,7 +59,7 @@ def filter_empty_or_ignore_element(values):
 
 def sheet_to_suite(root_topic):
     """convert a xmind sheet to a `TestSuite` instance"""
-    root_suite = TestSuite()
+    suite = TestSuite()
     root_title = root_topic['title']
     separator = root_title[-1]
 
@@ -70,21 +70,21 @@ def sheet_to_suite(root_topic):
     else:
         config['sep'] = ' '
 
-    root_suite.name = root_title
-    root_suite.details = root_topic['note']
-    root_suite.sub_suites = []  # TODO(devin): infinite recursive reference problem
+    suite.name = root_title
+    suite.details = root_topic['note']
+    suite.sub_suites = []
 
     for suite_dict in root_topic['topics']:
-        root_suite.sub_suites.append(parse_testsuite(suite_dict))
+        suite.sub_suites.append(parse_testsuite(suite_dict))
 
-    return root_suite
+    return suite
 
 
 def parse_testsuite(suite_dict):
     testsuite = TestSuite()
     testsuite.name = suite_dict['title']
     testsuite.details = suite_dict['note']
-    testsuite.testcase_list = []  # TODO(devin): infinite recursive reference problem
+    testsuite.testcase_list = []
     logging.debug('start to parse a testsuite: %s', testsuite.name)
 
     for cases_dict in suite_dict.get('topics', []):
@@ -143,6 +143,20 @@ def parse_a_testcase(case_dict, parent):
     if step_dict_list:
         testcase.steps = parse_test_steps(step_dict_list)
 
+    # the result of the testcase take precedence over the result of the teststep
+    testcase.result = get_test_result(case_dict['markers'])
+
+    if testcase.result == 0 and testcase.steps:
+        for step in testcase.steps:
+            if step.result == 2:
+                testcase.result = 2
+                break
+            if step.result == 3:
+                testcase.result = 3
+                break
+
+            testcase.result = step.result  # there is no need to judge where test step are ignored
+
     logging.debug('finds a testcase: %s', testcase.to_dict())
     return testcase
 
@@ -196,12 +210,36 @@ def parse_a_test_step(step_dict):
     test_step.actions = step_dict['title']
 
     expected_topics = step_dict.get('topics', [])
-    if expected_topics:
-        test_step.expectedresults = expected_topics[0]['title']  # one test step action, one test expected result
+    if expected_topics:  # have expected result
+        expected_topic = expected_topics[0]
+        test_step.expectedresults = expected_topic['title']  # one test step action, one test expected result
+        markers = expected_topic['markers']
+        test_step.result = get_test_result(markers)
+    else:  # only have test step
+        markers = step_dict['markers']
+        test_step.result = get_test_result(markers)
 
     logging.debug('finds a teststep: %s', test_step.to_dict())
     return test_step
 
+
+def get_test_result(markers):
+    """test result: non-execution:0, pass:1, failed:2, blocked:3, skipped:4"""
+    if isinstance(markers, list):
+        if 'symbol-right' in markers or 'c_simbol-right' in markers:
+            result = 1
+        elif 'symbol-wrong' in markers or 'c_simbol-wrong' in markers:
+            result = 2
+        elif 'symbol-pause' in markers or 'c_simbol-pause' in markers:
+            result = 3
+        elif 'symbol-minus' in markers or 'c_simbol-minus' in markers:
+            result = 4
+        else:
+            result = 0
+    else:
+        result = 0
+
+    return result
 
 
 

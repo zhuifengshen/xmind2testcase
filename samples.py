@@ -11,7 +11,7 @@ from xmind2testcase.utils import get_xmind_testsuite_list
 
 
 def main():
-    xmind_file = 'docs/xmind_testcase_template.xmind'
+    xmind_file = 'docs/xmind_testcase_template_v1.1.xmind'
     print('Start to convert XMind file: %s' % xmind_file)
 
     # 1、testcases import file
@@ -30,7 +30,7 @@ def main():
     testcase_json_file = xmind_testcase_to_json_file(xmind_file)
     print('Convert XMind file to testcase json file successfully: %s' % testcase_json_file)
 
-    # 3、test dict data
+    # 3、test dict/json data
     # (1) testsuite
     testsuites = get_xmind_testsuite_list(xmind_file)
     print('Convert XMind to testsuits dict data:\n%s' %
@@ -38,7 +38,7 @@ def main():
     # (2) testcase
     testcases = get_xmind_testcase_list(xmind_file)
     print('Convert Xmind to testcases dict data:\n%s' %
-          json.dumps(testcases, indent=4, separators=(',', ': ')))
+          json.dumps(testcases, indent=4, separators=(',', ': '), ensure_ascii=False))
     # (3) xmind file
     workbook = xmind.load(xmind_file)
     print('Convert XMind to Json data:\n%s' %
