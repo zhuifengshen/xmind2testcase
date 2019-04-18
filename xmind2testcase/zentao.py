@@ -29,7 +29,7 @@ def xmind_to_zentao_csv_file(xmind_file):
         logging.info('The zentao csv file already exists, return it directly: %s', zentao_file)
         return zentao_file
 
-    with open(zentao_file, 'w', encoding='utf8') as f:
+    with open(zentao_file, 'w', encoding='utf8', newline='') as f:
         writer = csv.writer(f)
         writer.writerows(zentao_testcase_rows)
         logging.info('Convert XMind file(%s) to a zentao csv file(%s) successfully!', xmind_file, zentao_file)
@@ -42,10 +42,10 @@ def gen_a_testcase_row(testcase_dict):
     case_title = testcase_dict['name']
     case_precontion = testcase_dict['preconditions']
     case_step, case_expected_result = gen_case_step_and_expected_result(testcase_dict['steps'])
-    case_keyword = '功能测试'
     case_priority = gen_case_priority(testcase_dict['importance'])
     case_type = gen_case_type(testcase_dict['execution_type'])
-    case_apply_phase = '迭代测试'
+    case_apply_phase = gen_case_phase(testcase_dict['phase'])
+    case_keyword = case_type
     row = [case_module, case_title, case_precontion, case_step, case_expected_result, case_keyword, case_priority, case_type, case_apply_phase]
     return row
 
@@ -73,19 +73,21 @@ def gen_case_step_and_expected_result(steps):
 
 
 def gen_case_priority(priority):
-    mapping = {1: '高', 2: '中', 3: '低'}
-    if priority in mapping.keys():
-        return mapping[priority]
-    else:
-        return '中'
+    return priority
 
 
 def gen_case_type(case_type):
-    mapping = {1: '手动', 2: '自动'}
-    if case_type in mapping.keys():
-        return mapping[case_type]
+    if case_type in {'功能测试', '性能测试', '配置相关', '安装部署', '安全相关', '接口测试', '其他'}:
+        return case_type
     else:
-        return '手动'
+        return '功能测试'
+
+
+def gen_case_phase(case_phase):
+    if case_phase in {'单元测试阶段', '功能测试阶段', '集成测试阶段', '系统测试阶段', '冒烟测试阶段', '版本验证阶段'}:
+        return case_phase
+    else:
+        return '功能测试阶段'
 
 
 if __name__ == '__main__':

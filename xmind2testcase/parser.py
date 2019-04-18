@@ -139,6 +139,10 @@ def parse_a_testcase(case_dict, parent):
 
     testcase.importance = get_priority(case_dict) or 2
 
+    testcase.execution_type = case_dict['label'] or '功能测试'
+
+    testcase.phase = case_dict['link'] or '功能测试阶段'
+
     step_dict_list = case_dict.get('topics', [])
     if step_dict_list:
         testcase.steps = parse_test_steps(step_dict_list)
