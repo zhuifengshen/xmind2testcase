@@ -109,11 +109,12 @@ def xmind_testsuite_to_json_file(xmind_file):
     testsuite_json_file = xmind_file[:-6] + '_testsuite.json'
 
     if os.path.exists(testsuite_json_file):
-        logging.info('The testsuite json file already exists, return it directly: %s', testsuite_json_file)
-        return testsuite_json_file
+        os.remove(testsuite_json_file)
+        # logging.info('The testsuite json file already exists, return it directly: %s', testsuite_json_file)
+        # return testsuite_json_file
 
     with open(testsuite_json_file, 'w', encoding='utf8') as f:
-        f.write(json.dumps(testsuites, indent=4, separators=(',', ': ')))
+        f.write(json.dumps(testsuites, indent=4, separators=(',', ': '), ensure_ascii=False))
         logging.info('Convert XMind file(%s) to a testsuite json file(%s) successfully!', xmind_file, testsuite_json_file)
 
     return testsuite_json_file
@@ -127,11 +128,12 @@ def xmind_testcase_to_json_file(xmind_file):
     testcase_json_file = xmind_file[:-6] + '.json'
 
     if os.path.exists(testcase_json_file):
-        logging.info('The testcase json file already exists, return it directly: %s', testcase_json_file)
-        return testcase_json_file
+        os.remove(testcase_json_file)
+        # logging.info('The testcase json file already exists, return it directly: %s', testcase_json_file)
+        # return testcase_json_file
 
     with open(testcase_json_file, 'w', encoding='utf8') as f:
-        f.write(json.dumps(testcases, indent=4, separators=(',', ': ')))
+        f.write(json.dumps(testcases, indent=4, separators=(',', ': '), ensure_ascii=False))
         logging.info('Convert XMind file(%s) to a testcase json file(%s) successfully!', xmind_file, testcase_json_file)
 
     return testcase_json_file

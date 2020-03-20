@@ -7,7 +7,6 @@ import arrow
 import sqlite3
 from contextlib import closing
 from os.path import join, exists
-from werkzeug.contrib.fixers import ProxyFix
 from werkzeug.utils import secure_filename
 from xmind2testcase.zentao import xmind_to_zentao_csv_file
 from xmind2testcase.testlink import xmind_to_testlink_xml_file
@@ -46,7 +45,6 @@ HOST = '0.0.0.0'
 app = Flask(__name__)
 app.config.from_object(__name__)
 app.secret_key = os.urandom(32)
-app.wsgi_app = ProxyFix(app.wsgi_app)
 
 
 def connect_db():
@@ -291,12 +289,11 @@ def app_error(e):
     return str(e)
 
 
-def launch(host='127.0.0.1', debug=True, port=5001):
+def launch(host=HOST, debug=True, port=5001):
+    init()  # initializing the database
     app.run(host=host, debug=debug, port=port)
 
 
-init()  # initializing the database
-
-
 if __name__ == '__main__':
+    init()  # initializing the database
     app.run(HOST, debug=DEBUG, port=5001)

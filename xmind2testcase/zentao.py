@@ -26,8 +26,9 @@ def xmind_to_zentao_csv_file(xmind_file):
 
     zentao_file = xmind_file[:-6] + '.csv'
     if os.path.exists(zentao_file):
-        logging.info('The zentao csv file already exists, return it directly: %s', zentao_file)
-        return zentao_file
+        os.remove(zentao_file)
+        # logging.info('The zentao csv file already exists, return it directly: %s', zentao_file)
+        # return zentao_file
 
     with open(zentao_file, 'w', encoding='utf8') as f:
         writer = csv.writer(f)
@@ -42,7 +43,7 @@ def gen_a_testcase_row(testcase_dict):
     case_title = testcase_dict['name']
     case_precontion = testcase_dict['preconditions']
     case_step, case_expected_result = gen_case_step_and_expected_result(testcase_dict['steps'])
-    case_keyword = '功能测试'
+    case_keyword = ''
     case_priority = gen_case_priority(testcase_dict['importance'])
     case_type = gen_case_type(testcase_dict['execution_type'])
     case_apply_phase = '迭代测试'

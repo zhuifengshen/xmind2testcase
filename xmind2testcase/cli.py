@@ -7,28 +7,26 @@ from xmind2testcase.testlink import xmind_to_testlink_xml_file
 from xmind2testcase.utils import get_absolute_path, xmind_testcase_to_json_file
 from webtool.application import launch
 
-"""
-A tool to parse xmind file into testcase file, which will help you generate a testlink recognized
-xml file or a zentao recognized cvs file, then you can import it into testlink or zentao.
-
-Usage:
- xmind2testcase [path_to_xmind_file] [-csv] [-xml] [-json]
- xmind2testcase [webtool] [port_num] 
-
-Example:
- xmind2testcase /path/to/testcase.xmind        => output testcase.csv、testcase.xml、testcase.json
- xmind2testcase /path/to/testcase.xmind -csv   => output testcase.csv
- xmind2testcase /path/to/testcase.xmind -xml   => output testcase.xml
- xmind2testcase /path/to/testcase.xmind -json  => output testcase.json
- xmind2testcase webtool                        => launch the web testcase conversion tool locally: 127.0.0.1:5001
- xmind2testcase webtool 8000                   => launch the web testcase conversion tool locally: 127.0.0.1:8000
-  
-"""
-
-
 logging.basicConfig(level=logging.INFO,
                     format='%(asctime)s  %(name)s  %(levelname)s  [%(module)s - %(funcName)s]: %(message)s',
                     datefmt='%Y/%m/%d %H:%M:%S')
+
+using_doc = """
+    Xmind2Testcase is a tool to parse xmind file into testcase file, which will help you generate a testlink recognized
+    xml file or a zentao recognized cvs file, then you can import it into testlink or zentao.
+    
+    Usage:
+     xmind2testcase [path_to_xmind_file] [-csv] [-xml] [-json]
+     xmind2testcase [webtool] [port_num]
+    
+    Example:
+     xmind2testcase /path/to/testcase.xmind        => output testcase.csv、testcase.xml、testcase.json
+     xmind2testcase /path/to/testcase.xmind -csv   => output testcase.csv
+     xmind2testcase /path/to/testcase.xmind -xml   => output testcase.xml
+     xmind2testcase /path/to/testcase.xmind -json  => output testcase.json
+     xmind2testcase webtool                        => launch the web testcase conversion tool locally: 127.0.0.1:5001
+     xmind2testcase webtool 8000                   => launch the web testcase conversion tool locally: 127.0.0.1:8000
+    """
 
 
 def cli_main():
@@ -68,8 +66,7 @@ def cli_main():
             launch()
 
     else:
-        print(__doc__)
-        logging.error('%s', __doc__)
+        print(using_doc)
 
 
 if __name__ == '__main__':

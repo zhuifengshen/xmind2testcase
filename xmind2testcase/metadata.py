@@ -54,7 +54,7 @@ class TestCase(object):
         :param version: test case version infomation
         :param summary: test case summary infomation
         :param preconditions: test case pre condition
-        :param execution_type: manual or automate
+        :param execution_type: manual:1 or automate:2
         :param importance: high:1, middle:2, low:3
         :param estimated_exec_duration: estimated execution duration
         :param status: draft:1, ready ro review:2, review in progress:3, rework:4, obsolete:5, future:6, final:7

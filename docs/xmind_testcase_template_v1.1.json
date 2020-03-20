@@ -1,0 +1,503 @@
+[
+    {
+        "name": "测试用例1",
+        "version": 1,
+        "summary": "测试用例1",
+        "preconditions": "前置条件",
+        "execution_type": 1,
+        "importance": 1,
+        "estimated_exec_duration": 3,
+        "status": 7,
+        "result": 0,
+        "steps": [
+            {
+                "step_number": 1,
+                "actions": "测试步骤1",
+                "expectedresults": "预期结果1",
+                "execution_type": 1,
+                "result": 0
+            },
+            {
+                "step_number": 2,
+                "actions": "测试步骤2",
+                "expectedresults": "预期结果2",
+                "execution_type": 1,
+                "result": 0
+            }
+        ],
+        "product": "产品名称",
+        "suite": "A模块名"
+    },
+    {
+        "name": "测试用例2",
+        "version": 1,
+        "summary": "测试用例2",
+        "preconditions": "前置条件",
+        "execution_type": 1,
+        "importance": 1,
+        "estimated_exec_duration": 3,
+        "status": 7,
+        "result": 0,
+        "steps": [
+            {
+                "step_number": 1,
+                "actions": "测试步骤1",
+                "expectedresults": "预期结果1",
+                "execution_type": 1,
+                "result": 0
+            },
+            {
+                "step_number": 2,
+                "actions": "测试步骤2（预期结果2可以为空）",
+                "expectedresults": "",
+                "execution_type": 1,
+                "result": 0
+            },
+            {
+                "step_number": 3,
+                "actions": "测试步骤3",
+                "expectedresults": "预期结果3",
+                "execution_type": 1,
+                "result": 0
+            },
+            {
+                "step_number": 4,
+                "actions": "测试步骤4",
+                "expectedresults": "预期结果4",
+                "execution_type": 1,
+                "result": 0
+            }
+        ],
+        "product": "产品名称",
+        "suite": "A模块名"
+    },
+    {
+        "name": "测试用例3（测试步骤和预期结果可以都为空）",
+        "version": 1,
+        "summary": "测试用例3（测试步骤和预期结果可以都为空）",
+        "preconditions": "无",
+        "execution_type": 1,
+        "importance": 2,
+        "estimated_exec_duration": 3,
+        "status": 7,
+        "result": 0,
+        "steps": [],
+        "product": "产品名称",
+        "suite": "A模块名"
+    },
+    {
+        "name": "测试步骤2（优先级默认为中）",
+        "version": 1,
+        "summary": "测试步骤2（优先级默认为中）",
+        "preconditions": "无",
+        "execution_type": 1,
+        "importance": 2,
+        "estimated_exec_duration": 3,
+        "status": 7,
+        "result": 0,
+        "steps": [
+            {
+                "step_number": 1,
+                "actions": "测试步骤1",
+                "expectedresults": "预期结果1",
+                "execution_type": 1,
+                "result": 0
+            },
+            {
+                "step_number": 2,
+                "actions": "测试步骤3",
+                "expectedresults": "",
+                "execution_type": 1,
+                "result": 0
+            }
+        ],
+        "product": "产品名称",
+        "suite": "B模块名"
+    },
+    {
+        "name": "测试用例3（前置条件默认为空，且没有设置优先级） 无设置优先级，这里加入用例标题",
+        "version": 1,
+        "summary": "测试用例3（前置条件默认为空，且没有设置优先级） 无设置优先级，这里加入用例标题",
+        "preconditions": "无",
+        "execution_type": 1,
+        "importance": 2,
+        "estimated_exec_duration": 3,
+        "status": 7,
+        "result": 0,
+        "steps": [],
+        "product": "产品名称",
+        "suite": "B模块名"
+    },
+    {
+        "name": "测试用例1 测试步骤 预期结果（未标识执行结果状态，默认为未执行状态）",
+        "version": 1,
+        "summary": "测试用例1 测试步骤 预期结果（未标识执行结果状态，默认为未执行状态）",
+        "preconditions": "无",
+        "execution_type": 1,
+        "importance": 2,
+        "estimated_exec_duration": 3,
+        "status": 7,
+        "result": 0,
+        "steps": [],
+        "product": "产品名称",
+        "suite": "C模块名"
+    },
+    {
+        "name": "测试用例2",
+        "version": 1,
+        "summary": "测试用例2",
+        "preconditions": "无",
+        "execution_type": 1,
+        "importance": 1,
+        "estimated_exec_duration": 3,
+        "status": 7,
+        "result": 2,
+        "steps": [
+            {
+                "step_number": 1,
+                "actions": "测试步骤1",
+                "expectedresults": "预期结果1（执行结果通过）",
+                "execution_type": 1,
+                "result": 1
+            },
+            {
+                "step_number": 2,
+                "actions": "测试步骤2",
+                "expectedresults": "预期结果2（执行结果失败）",
+                "execution_type": 1,
+                "result": 2
+            },
+            {
+                "step_number": 3,
+                "actions": "测试步骤3",
+                "expectedresults": "预期结果3（执行结果阻塞）",
+                "execution_type": 1,
+                "result": 3
+            },
+            {
+                "step_number": 4,
+                "actions": "测试步骤4",
+                "expectedresults": "预期结果4（执行结果忽略）",
+                "execution_type": 1,
+                "result": 4
+            }
+        ],
+        "product": "产品名称",
+        "suite": "C模块名"
+    },
+    {
+        "name": "测试用例3（用例标题标识执行结果为失败，则用例结果为失败，忽略测试步骤和预期结果中的标识）",
+        "version": 1,
+        "summary": "测试用例3（用例标题标识执行结果为失败，则用例结果为失败，忽略测试步骤和预期结果中的标识）",
+        "preconditions": "无",
+        "execution_type": 1,
+        "importance": 2,
+        "estimated_exec_duration": 3,
+        "status": 7,
+        "result": 2,
+        "steps": [
+            {
+                "step_number": 1,
+                "actions": "测试步骤1",
+                "expectedresults": "预期结果1",
+                "execution_type": 1,
+                "result": 1
+            },
+            {
+                "step_number": 2,
+                "actions": "测试步骤2",
+                "expectedresults": "预期结果2",
+                "execution_type": 1,
+                "result": 1
+            }
+        ],
+        "product": "产品名称",
+        "suite": "C模块名"
+    },
+    {
+        "name": "测试用例4",
+        "version": 1,
+        "summary": "测试用例4",
+        "preconditions": "无",
+        "execution_type": 1,
+        "importance": 3,
+        "estimated_exec_duration": 3,
+        "status": 7,
+        "result": 1,
+        "steps": [
+            {
+                "step_number": 1,
+                "actions": "测试步骤1（这里无预期结果，则用例执行结果以测试步骤中的标识为准）",
+                "expectedresults": "",
+                "execution_type": 1,
+                "result": 1
+            },
+            {
+                "step_number": 2,
+                "actions": "测试步骤2",
+                "expectedresults": "",
+                "execution_type": 1,
+                "result": 1
+            }
+        ],
+        "product": "产品名称",
+        "suite": "C模块名"
+    },
+    {
+        "name": "测试用例5（这里无测试步骤，则用例执行结果以测试标题中的标识为准）",
+        "version": 1,
+        "summary": "测试用例5（这里无测试步骤，则用例执行结果以测试标题中的标识为准）",
+        "preconditions": "无",
+        "execution_type": 1,
+        "importance": 2,
+        "estimated_exec_duration": 3,
+        "status": 7,
+        "result": 1,
+        "steps": [],
+        "product": "产品名称",
+        "suite": "C模块名"
+    },
+    {
+        "name": "验证登录页 > 登录链接",
+        "version": 1,
+        "summary": "验证登录页 > 登录链接",
+        "preconditions": "前置条件1：测试用例的备注会自动识别为测试用例的前置条件，有多个备注时，也会自动合并起来（默认为空）\n----\n前置条件2：测试用例的备注会自动识别为测试用例的前置条件，有多个备注时，也会自动合并起来（默认为空）",
+        "execution_type": 1,
+        "importance": 1,
+        "estimated_exec_duration": 3,
+        "status": 7,
+        "result": 0,
+        "steps": [
+            {
+                "step_number": 1,
+                "actions": "测试步骤1",
+                "expectedresults": "预期结果1",
+                "execution_type": 1,
+                "result": 0
+            },
+            {
+                "step_number": 2,
+                "actions": "测试步骤2",
+                "expectedresults": "预期结果2",
+                "execution_type": 1,
+                "result": 0
+            }
+        ],
+        "product": "产品名称2",
+        "suite": "用户模块"
+    },
+    {
+        "name": "验证登录页 > 登录页面",
+        "version": 1,
+        "summary": "验证登录页 > 登录页面",
+        "preconditions": "前置条件1：测试用例的备注会自动识别为测试用例的前置条件，有多个备注时，也会自动合并起来（默认为空）",
+        "execution_type": 1,
+        "importance": 2,
+        "estimated_exec_duration": 3,
+        "status": 7,
+        "result": 0,
+        "steps": [
+            {
+                "step_number": 1,
+                "actions": "测试步骤：页面设计风格统一（可以只有测试步骤，没有预期结果)",
+                "expectedresults": "",
+                "execution_type": 1,
+                "result": 0
+            }
+        ],
+        "product": "产品名称2",
+        "suite": "用户模块"
+    },
+    {
+        "name": "验证登录页 > 控件 > 用户名输入",
+        "version": 1,
+        "summary": "验证登录页 > 控件 > 用户名输入",
+        "preconditions": "前置条件1：测试用例的备注会自动识别为测试用例的前置条件，有多个备注时，也会自动合并起来（默认为空）\n----\n前置条件2：测试用例的备注会自动识别为测试用例的前置条件，有多个备注时，也会自动合并起来（默认为空）\n----\n前置条件3：测试用例的备注会自动识别为测试用例的前置条件，有多个备注时，也会自动合并起来（默认为空）",
+        "execution_type": 1,
+        "importance": 3,
+        "estimated_exec_duration": 3,
+        "status": 7,
+        "result": 0,
+        "steps": [
+            {
+                "step_number": 1,
+                "actions": "测试步骤",
+                "expectedresults": "预期结果",
+                "execution_type": 1,
+                "result": 0
+            }
+        ],
+        "product": "产品名称2",
+        "suite": "用户模块"
+    },
+    {
+        "name": "验证登录页 > 控件 > 密码输入",
+        "version": 1,
+        "summary": "验证登录页 > 控件 > 密码输入",
+        "preconditions": "前置条件1：测试用例的备注会自动识别为测试用例的前置条件，有多个备注时，也会自动合并起来（默认为空）\n----\n前置条件2：测试用例的备注会自动识别为测试用例的前置条件，有多个备注时，也会自动合并起来（默认为空）",
+        "execution_type": 1,
+        "importance": 1,
+        "estimated_exec_duration": 3,
+        "status": 7,
+        "result": 0,
+        "steps": [
+            {
+                "step_number": 1,
+                "actions": "测试步骤",
+                "expectedresults": "预期结果1",
+                "execution_type": 1,
+                "result": 0
+            }
+        ],
+        "product": "产品名称2",
+        "suite": "用户模块"
+    },
+    {
+        "name": "验证登录页 > 控件 > 登录按钮",
+        "version": 1,
+        "summary": "验证登录页 > 控件 > 登录按钮",
+        "preconditions": "前置条件1：测试用例的备注会自动识别为测试用例的前置条件，有多个备注时，也会自动合并起来（默认为空）\n----\n前置条件2：测试用例的备注会自动识别为测试用例的前置条件，有多个备注时，也会自动合并起来（默认为空）",
+        "execution_type": 1,
+        "importance": 2,
+        "estimated_exec_duration": 3,
+        "status": 7,
+        "result": 0,
+        "steps": [],
+        "product": "产品名称2",
+        "suite": "用户模块"
+    },
+    {
+        "name": "验证登录页 > 国际化 > 中文环境",
+        "version": 1,
+        "summary": "测试用例摘要：评论自动识别为测试用例的摘要内容（summary)",
+        "preconditions": "前置条件1：测试用例的备注会自动识别为测试用例的前置条件，有多个备注时，也会自动合并起来（默认为空）",
+        "execution_type": 1,
+        "importance": 1,
+        "estimated_exec_duration": 3,
+        "status": 7,
+        "result": 0,
+        "steps": [],
+        "product": "产品名称2",
+        "suite": "用户模块"
+    },
+    {
+        "name": "验证登录页 > 国际化 > 英文环境",
+        "version": 1,
+        "summary": "测试用例摘要：评论自动识别为测试用例的摘要内容（summary)",
+        "preconditions": "前置条件1：测试用例的备注会自动识别为测试用例的前置条件，有多个备注时，也会自动合并起来（默认为空）",
+        "execution_type": 1,
+        "importance": 2,
+        "estimated_exec_duration": 3,
+        "status": 7,
+        "result": 0,
+        "steps": [],
+        "product": "产品名称2",
+        "suite": "用户模块"
+    },
+    {
+        "name": "验证登录页 > 操作 > 有效的用户名+有效的密码",
+        "version": 1,
+        "summary": "验证登录页 > 操作 > 有效的用户名+有效的密码",
+        "preconditions": "前置条件1：测试用例的备注会自动识别为测试用例的前置条件，有多个备注时，也会自动合并起来（默认为空）",
+        "execution_type": 1,
+        "importance": 1,
+        "estimated_exec_duration": 3,
+        "status": 7,
+        "result": 0,
+        "steps": [
+            {
+                "step_number": 1,
+                "actions": "测试步骤1",
+                "expectedresults": "",
+                "execution_type": 1,
+                "result": 0
+            },
+            {
+                "step_number": 2,
+                "actions": "测试步骤2",
+                "expectedresults": "预期结果",
+                "execution_type": 1,
+                "result": 0
+            },
+            {
+                "step_number": 3,
+                "actions": "测试步骤3（可以只有测试步骤，没有预期结果）",
+                "expectedresults": "",
+                "execution_type": 1,
+                "result": 0
+            }
+        ],
+        "product": "产品名称2",
+        "suite": "用户模块"
+    },
+    {
+        "name": "验证登录页 > 操作 > 有效的用户名+无效的密码",
+        "version": 1,
+        "summary": "验证登录页 > 操作 > 有效的用户名+无效的密码",
+        "preconditions": "前置条件1：测试用例的备注会自动识别为测试用例的前置条件，有多个备注时，也会自动合并起来（默认为空）",
+        "execution_type": 1,
+        "importance": 1,
+        "estimated_exec_duration": 3,
+        "status": 7,
+        "result": 0,
+        "steps": [],
+        "product": "产品名称2",
+        "suite": "用户模块"
+    },
+    {
+        "name": "验证登录页 > 操作 > 无效的用户名+无效的密码",
+        "version": 1,
+        "summary": "验证登录页 > 操作 > 无效的用户名+无效的密码",
+        "preconditions": "前置条件1：测试用例的备注会自动识别为测试用例的前置条件，有多个备注时，也会自动合并起来（默认为空）",
+        "execution_type": 1,
+        "importance": 2,
+        "estimated_exec_duration": 3,
+        "status": 7,
+        "result": 0,
+        "steps": [],
+        "product": "产品名称2",
+        "suite": "用户模块"
+    },
+    {
+        "name": "验证个人主页",
+        "version": 1,
+        "summary": "验证个人主页",
+        "preconditions": "前置条件：如果测试用例上没有标注优先级，则默认作为一条测试用例且优先级默认为中（默认为空）",
+        "execution_type": 1,
+        "importance": 2,
+        "estimated_exec_duration": 3,
+        "status": 7,
+        "result": 0,
+        "steps": [],
+        "product": "产品名称2",
+        "suite": "用户模块"
+    },
+    {
+        "name": "用户表 > Data",
+        "version": 1,
+        "summary": "用户表 > Data",
+        "preconditions": "前置条件：如果测试用例上没有标注优先级，则默认作为一条测试用例且优先级默认为中（默认为空）",
+        "execution_type": 1,
+        "importance": 2,
+        "estimated_exec_duration": 3,
+        "status": 7,
+        "result": 0,
+        "steps": [],
+        "product": "产品名称2",
+        "suite": "数据库模块"
+    },
+    {
+        "name": "用户表 > Schema",
+        "version": 1,
+        "summary": "用户表 > Schema",
+        "preconditions": "无",
+        "execution_type": 1,
+        "importance": 2,
+        "estimated_exec_duration": 3,
+        "status": 7,
+        "result": 0,
+        "steps": [],
+        "product": "产品名称2",
+        "suite": "数据库模块"
+    }
+]

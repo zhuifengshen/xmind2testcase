@@ -136,7 +136,7 @@ def parse_a_testcase(case_dict, parent):
 
     summary = gen_testcase_summary(topics)
     testcase.summary = summary if summary else testcase.name
-
+    testcase.execution_type = get_execution_type(topics)
     testcase.importance = get_priority(case_dict) or 2
 
     step_dict_list = case_dict.get('topics', [])
@@ -159,6 +159,20 @@ def parse_a_testcase(case_dict, parent):
 
     logging.debug('finds a testcase: %s', testcase.to_dict())
     return testcase
+
+
+def get_execution_type(topics):
+    labels = [topic.get('label', '') for topic in topics]
+    labels = filter_empty_or_ignore_element(labels)
+    exe_type = 1
+    for item in labels[::-1]:
+        if item.lower() in ['自动', 'auto', 'automate', 'automation']:
+            exe_type = 2
+            break
+        if item.lower() in ['手动', '手工', 'manual']:
+            exe_type = 1
+            break
+    return exe_type
 
 
 def get_priority(case_dict):
