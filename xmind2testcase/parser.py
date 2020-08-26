@@ -166,11 +166,14 @@ def get_execution_type(topics):
     labels = filter_empty_or_ignore_element(labels)
     exe_type = 1
     for item in labels[::-1]:
-        if item.lower() in ['自动', 'auto', 'automate', 'automation']:
+        if item.lower() in ['冒烟测试']:
             exe_type = 2
             break
-        if item.lower() in ['手动', '手工', 'manual']:
+        if item.lower() in ['功能测试']:
             exe_type = 1
+            break
+        if item.lower() in ['接口测试']:
+            exe_type = 3
             break
     return exe_type
 
