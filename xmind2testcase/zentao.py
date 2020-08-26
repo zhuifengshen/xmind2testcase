@@ -74,19 +74,19 @@ def gen_case_step_and_expected_result(steps):
 
 
 def gen_case_priority(priority):
-    mapping = {1: '高', 2: '中', 3: '低'}
+    mapping = {1: '1', 2: '2', 3: '3'}
     if priority in mapping.keys():
         return mapping[priority]
     else:
-        return '中'
+        return '2'
 
 
 def gen_case_type(case_type):
-    mapping = {1: '手动', 2: '自动'}
+    mapping = {1: '功能测试', 2: '冒烟测试', 3: '接口测试'}
     if case_type in mapping.keys():
         return mapping[case_type]
     else:
-        return '手动'
+        return '功能测试'
 
 
 if __name__ == '__main__':
