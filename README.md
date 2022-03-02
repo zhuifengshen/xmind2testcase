@@ -570,6 +570,12 @@ v1.5.0
 4、修复服务器远程部署无法访问问题；
 5、取消测试用例关键字默认设置；
 
+v1.5.1 - 禅道配置版本
+1、修复导出csv中文显示编码问题；
+2、修复导出csv存在空行问题；
+3、根据禅道新版本，优化“用例类型”、“适用阶段”、“优先级”列数据；（忽略Testlink）
+   用例类型： 1: '功能测试', 2: '性能测试', 3: '配置相关', 4: '安装部署', 5: '安全相关', 6: '接口测试', 7: '其他'
+
 备注：XMind2Testcase针对XMind经典系列版本，暂不支持XMind Zen版本！
 ```
 
@@ -594,6 +600,7 @@ v1.5.0
 ```
 MIT License
 
+Copyright (c) 2022 Alpha https://github.com/yoyoalphax/
 Copyright (c) 2019 Devin https://zhangchuzhao.site
 Copyright (c) 2017 Toby Qin
 

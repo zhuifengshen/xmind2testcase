@@ -166,14 +166,29 @@ def get_execution_type(topics):
     labels = filter_empty_or_ignore_element(labels)
     exe_type = 1
     for item in labels[::-1]:
-        if item.lower() in ['自动', 'auto', 'automate', 'automation']:
-            exe_type = 2
-            break
-        if item.lower() in ['手动', '手工', 'manual']:
+        if item.lower() in ['功能测试']:
             exe_type = 1
             break
+        if item.lower() in ['性能测试']:
+            exe_type = 2
+            break
+        if item.lower() in ['配置相关']:
+            exe_type = 3
+            break
+        if item.lower() in ['安装部署']:
+            exe_type = 4
+            break
+        if item.lower() in ['安全相关']:
+            exe_type = 5
+            break
+        if item.lower() in ['接口测试']:
+            exe_type = 6
+            break
+        if item.lower() in ['其他']:
+            exe_type = 7
+            break
     return exe_type
-
+    # {1: '功能测试', 2: '性能测试', 3: '配置相关', 4: '安装部署', 5: '安全相关', 6: '接口测试', 7: '其他'}
 
 def get_priority(case_dict):
     """Get the topic's priority（equivalent to the importance of the testcase)"""
