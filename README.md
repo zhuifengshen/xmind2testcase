@@ -1,6 +1,6 @@
-# XMind2TestCase
+# XMind2TestCaseZen
 
-> **XMind2TestCase** 工具，提供了一个高效测试用例设计的解决方案！
+> **XMind2TestCaseZen** 工具，提供了一个高效测试用例设计的解决方案！
 
 
 ### 一、背景
@@ -28,12 +28,12 @@
 
 那么问题来了，我们能不能将它们各自优点合在一起呢？这样不就可以提升我们的效率了！
 
-于是，这时候 **XMind2TestCase** 就应运而生了，该工具基于 Python 实现，通过制定**测试用例通用模板**，
+于是，这时候 **XMind2TestCaseZen** 就应运而生了，该工具基于 Python 实现，通过制定**测试用例通用模板**，
 然后使用 **[XMind](https://www.xmind.cn/)** 这款广为流传且开源的思维导图工具进行用例设计。
-其中制定**测试用例通用模板**是一个非常核心的步骤（具体请看[使用指南](https://github.com/zhuifengshen/xmind2testcase/blob/master/webtool/static/guide/index.md)），有了通用的测试用例模板，我们就可以在 XMind 文件上解析并提取出测试用例所需的基本信息，
+其中制定**测试用例通用模板**是一个非常核心的步骤（具体请看[使用指南](https://github.com/maiyajj/xmind2testcasezen/blob/master/webtool/static/guide/index.md)），有了通用的测试用例模板，我们就可以在 XMind 文件上解析并提取出测试用例所需的基本信息，
 然后合成常见**测试用例管理系统**所需的**用例导入文件**。这样就将 **XMind 设计测试用例的便利**与**常见测试用例系统的高效管理**结合起来了！
 
-当前 **XMind2TestCase** 已实现从 XMind 文件到 TestLink 和 Zentao(禅道) 两大常见用例管理系统的测试用例转换，同时也提供 XMind 文件解析后的两种数据接口
+当前 **XMind2TestCaseZen** 已实现从 XMind 文件到 TestLink 和 Zentao(禅道) 两大常见用例管理系统的测试用例转换，同时也提供 XMind 文件解析后的两种数据接口
 （TestSuites、TestCases两种级别的JSON数据），方便快速与其他测试用例管理系统打通。
 
 
@@ -41,30 +41,30 @@
 
 #### 1、Web工具示例
 
-![webtool](https://raw.githubusercontent.com/zhuifengshen/xmind2testcase/master/webtool/static/guide/webtool.png)
+![webtool](https://raw.githubusercontent.com/maiyajj/xmind2testcasezen/master/webtool/static/guide/webtool.png)
 
 #### 2、转换后用例预览
 
-![testcase_preview](https://raw.githubusercontent.com/zhuifengshen/xmind2testcase/master/webtool/static/guide/xmind_to_testcase_preview.png)
+![testcase_preview](https://raw.githubusercontent.com/maiyajj/xmind2testcasezen/master/webtool/static/guide/xmind_to_testcase_preview.png)
 
 #### 3、TestLink导入结果示例
 
-![testlink](https://raw.githubusercontent.com/zhuifengshen/xmind2testcase/master/webtool/static/guide/testlink.png)
+![testlink](https://raw.githubusercontent.com/maiyajj/xmind2testcasezen/master/webtool/static/guide/testlink.png)
 
 #### 4、禅道（ZenTao）导入结果示例
 
-![zentao](https://raw.githubusercontent.com/zhuifengshen/xmind2testcase/master/webtool/static/guide/zentao_import_result.png)
+![zentao](https://raw.githubusercontent.com/maiyajj/xmind2testcasezen/master/webtool/static/guide/zentao_import_result.png)
 
 
 ### 三、安装方式
 ```
-pip3 install xmind2testcase
+pip3 install xmind2testcasezen
 ```
 
 
 ### 四、版本升级
 ```
-pip3 install -U xmind2testcase
+pip3 install -U xmind2testcasezen
 ```
 
 
@@ -73,38 +73,39 @@ pip3 install -U xmind2testcase
 #### 1、命令行调用
 ```
 Usage:
- xmind2testcase [path_to_xmind_file] [-csv] [-xml] [-json]
+ xmind2testcasezen [path_to_xmind_file] [-csv] [-xml] [-json]
 
 Example:
- xmind2testcase /path/to/testcase.xmind        => output testcase.csv、testcase.xml、testcase.json
- xmind2testcase /path/to/testcase.xmind -csv   => output testcase.csv
- xmind2testcase /path/to/testcase.xmind -xml   => output testcase.xml
- xmind2testcase /path/to/testcase.xmind -json  => output testcase.json
+ xmind2testcasezen /path/to/testcase.xmind        => output testcase.csv、testcase.xml、testcase.json
+ xmind2testcasezen /path/to/testcase.xmind -csv   => output testcase.csv
+ xmind2testcasezen /path/to/testcase.xmind -xml   => output testcase.xml
+ xmind2testcasezen /path/to/testcase.xmind -json  => output testcase.json
 ```
 
 #### 2、使用Web界面
 
-![web_tool_cli](https://raw.githubusercontent.com/zhuifengshen/xmind2testcase/master/webtool/static/guide/webtool_cli.png)
+![web_tool_cli](https://raw.githubusercontent.com/maiyajj/xmind2testcasezen/master/webtool/static/guide/webtool_cli.png)
+https://raw.githubusercontent.com/maiyajj/xmind2testcasezen/master/webtool/static/guide/webtool_cli.png
 
 ```
 Usage:
- xmind2testcase [webtool] [port_num]
+ xmind2testcasezen [webtool] [port_num]
 
 Example:
- xmind2testcase webtool        => launch the web testcase convertion tool locally -> 127.0.0.1:5001
- xmind2testcase webtool 8000   => launch the web testcase convertion tool locally -> 127.0.0.1:8000
+ xmind2testcasezen webtool        => launch the web testcase convertion tool locally -> 127.0.0.1:5001
+ xmind2testcasezen webtool 8000   => launch the web testcase convertion tool locally -> 127.0.0.1:8000
 ```
 
 #### 3、API调用
 ```
 import json
 import xmind
-from xmind2testcase.zentao import xmind_to_zentao_csv_file
-from xmind2testcase.testlink import xmind_to_testlink_xml_file
-from xmind2testcase.utils import xmind_testcase_to_json_file
-from xmind2testcase.utils import xmind_testsuite_to_json_file
-from xmind2testcase.utils import get_xmind_testcase_list
-from xmind2testcase.utils import get_xmind_testsuite_list
+from xmind2testcasezen.zentao import xmind_to_zentao_csv_file
+from xmind2testcasezen.testlink import xmind_to_testlink_xml_file
+from xmind2testcasezen.services import gen_testcase_to_json_file
+from xmind2testcasezen.services import gen_testsuite_to_json_file
+from xmind2testcasezen.services import get_testcase_list
+from xmind2testcasezen.services import get_testsuite_list
 
 
 def main():
@@ -117,16 +118,16 @@ def main():
     testlink_xml_file = xmind_to_testlink_xml_file(xmind_file)
     print('Convert XMind file to testlink xml file successfully: %s' % testlink_xml_file)
 
-    testsuite_json_file = xmind_testsuite_to_json_file(xmind_file)
+    testsuite_json_file = gen_testsuite_to_json_file(xmind_file)
     print('Convert XMind file to testsuite json file successfully: %s' % testsuite_json_file)
 
-    testcase_json_file = xmind_testcase_to_json_file(xmind_file)
+    testcase_json_file = gen_testcase_to_json_file(xmind_file)
     print('Convert XMind file to testcase json file successfully: %s' % testcase_json_file)
 
-    testsuites = get_xmind_testsuite_list(xmind_file)
+    testsuites = get_testsuite_list(xmind_file)
     print('Convert XMind to testsuits dict data:\n%s' % json.dumps(testsuites, indent=2, separators=(',', ': '), ensure_ascii=False))
 
-    testcases = get_xmind_testcase_list(xmind_file)
+    testcases = get_testcase_list(xmind_file)
     print('Convert Xmind to testcases dict data:\n%s' % json.dumps(testcases, indent=4, separators=(',', ': ')))
 
     workbook = xmind.load(xmind_file)
@@ -141,14 +142,14 @@ if __name__ == '__main__':
 
 #### 4、XMind用例文件转为JSON数据
 
-![xmind_testcase_demo](https://raw.githubusercontent.com/zhuifengshen/xmind2testcase/master/webtool/static/guide/xmind_testcase_demo.png)
+![xmind_testcase_demo](https://raw.githubusercontent.com/maiyajj/xmind2testcasezen/master/webtool/static/guide/xmind_testcase_demo.png)
 
 ##### （1）转为TestCase JSON数据
 
 ```
-from xmind2testcase.utils import get_xmind_testcase_list
+from xmind2testcasezen.services import get_testcase_list
 xmind_file = 'docs/xmind_testcase_demo.xmind'
-testcases = get_xmind_testcase_list(xmind_file)
+testcases = get_testcase_list(xmind_file)
 print(testcases)
 
 
@@ -284,9 +285,9 @@ Output:
 ##### （2）转为TestSuite JSON数据
 
 ```
-from xmind2testcase.utils import get_xmind_testsuite_list
+from xmind2testcasezen.services import get_testsuite_list
 xmind_file = 'docs/xmind_testcase_demo.xmind'
-testsuites = get_xmind_testsuite_list(xmind_file)
+testsuites = get_testsuite_list(xmind_file)
 print(testsuites)
 
 
@@ -433,7 +434,7 @@ TestSuite增加执行结果统计字段：statistics，示例如下：
 ##### （3）XMind文件转换为JSON数据
 
 以上（1）TestCase数据、（2）TestSuite数据的获取，其实是基于**[XMind](https://github.com/zhuifengshen/xmind)**这个工具，对XMind文件进行解析和数据提取，然后转换而来。
-这个工具是在设计XMind2TestCase时，针对XMind单独抽取出来的库，提供了XMind思维导图创建、解析、更新的一系列方法。使用它可以直接将XMind文件转换为JSON数据：
+这个工具是在设计XMind2TestCaseZen时，针对XMind单独抽取出来的库，提供了XMind思维导图创建、解析、更新的一系列方法。使用它可以直接将XMind文件转换为JSON数据：
 
 ```
 import xmind
@@ -529,7 +530,7 @@ Output:
   }
 ]
 ```
-具体参考：[xmind_testcase_demo.json](https://github.com/zhuifengshen/xmind2testcase/blob/master/docs/xmind_testcase_demo.json)
+具体参考：[xmind_testcase_demo.json](https://github.com/maiyajj/xmind2testcasezen/blob/master/docs/xmind_testcase_demo.json)
 
 
 ### 四、自动化发布：一键打 Tag 并上传至 PYPI 
@@ -540,7 +541,7 @@ Output:
 python3 setup.py pypi
 ```
 
-![upload_pypi](https://raw.githubusercontent.com/zhuifengshen/xmind2testcase/master/webtool/static/guide/pypi_upload.png)
+![upload_pypi](https://raw.githubusercontent.com/maiyajj/xmind2testcasezen/master/webtool/static/guide/pypi_upload.png)
 
 
 ### 五、CHANGELOG
@@ -570,22 +571,23 @@ v1.5.0
 4、修复服务器远程部署无法访问问题；
 5、取消测试用例关键字默认设置；
 
-备注：XMind2Testcase针对XMind经典系列版本，暂不支持XMind Zen版本！
+v1.6.0
+1、支持Xmind Zen版本
+2、支持用例操作步骤多个预期结果
+
+备注：XMind2TestcaseZen针对XMind经典系列版本，同时也支持XMind Zen版本！
 ```
 
 
 ### 六、致谢
-**XMind2TestCase** 工具的产生，受益于以下四个开源项目，并在此基础上扩展、优化，受益匪浅，感恩！
+**XMind2TestCaseZen** 工具的产生，受益于以下四个开源项目，并在此基础上扩展、优化，受益匪浅，感恩！
 
 - 1、**[XMind](https://github.com/zhuifengshen/xmind)**：XMind思维导图创建、解析、更新的一站式解决方案(Python实现)！  
 - 2、**[xmind2testlink](https://github.com/tobyqin/xmind2testlink)**：践行了XMind通用测试用例模板设计思路，同时提供了Web转换工具！
 - 3、**[TestLink](http://www.testlink.org/)**：提供了完整的测试用例管理流程和文档；
 - 4、**[禅道开源版(ZenTao)](https://www.zentao.net/)**：提供了完整的项目管理流程、文档和用户交流释疑群；
 
-得益于开源，也将坚持开源，并为努力开源贡献自己的点滴之力。后续，将继续根据实际项目需要，定期进行更新维护，
-欢迎大伙的[使用](https://github.com/zhuifengshen/xmind2testcase/blob/master/webtool/static/guide/index.md)和[意见反馈](https://github.com/zhuifengshen/xmind2testcase/issues/new)，谢谢！
-
-（如果本项目对你有帮助的话，也欢迎 _**[star](https://github.com/zhuifengshen/xmind2testcase)**_ ）
+得益于开源，也将坚持开源，并为努力开源贡献自己的点滴之力。后续，将继续根据实际项目需要，定期进行更新维护
 
 ![QA之禅](http://upload-images.jianshu.io/upload_images/139581-27c6030ba720846f.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
