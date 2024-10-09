@@ -165,13 +165,21 @@ def get_execution_type(topics):
     labels = [topic.get('label', '') for topic in topics]
     labels = filter_empty_or_ignore_element(labels)
     exe_type = 1
+    mapping = {1: '功能测试', 2: '性能测试', 3: '配置相关', 4: '安装部署', 5: '安全相关', 6: '接口测试', 7: '其他'}
     for item in labels[::-1]:
-        if item.lower() in ['自动', 'auto', 'automate', 'automation']:
-            exe_type = 2
+    #     if item.lower() in ['自动', 'auto', 'automate', 'automation']:
+    #         exe_type = 2
+    #         break
+    #     if item.lower() in ['手动', '手工', 'manual']:
+    #         exe_type = 1
+    #         break
+        if item.lower() in mapping.values():
+            exe_type = list({k: v for k, v in mapping.items() if v == item}.keys())[0]
             break
-        if item.lower() in ['手动', '手工', 'manual']:
-            exe_type = 1
-            break
+        if str.isdigit(item.lower()):
+            if int(item.lower()) in mapping.keys():
+                exe_type = int(item.lower())
+                break
     return exe_type
 
 
@@ -183,7 +191,7 @@ def get_priority(case_dict):
                 return int(marker[-1])
 
 
-def gen_testcase_title(topics):
+def     gen_testcase_title(topics):
     """Link all topic's title as testcase title"""
     titles = [topic['title'] for topic in topics]
     titles = filter_empty_or_ignore_element(titles)

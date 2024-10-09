@@ -1,0 +1,5 @@
+1、打开cmd，cd到工具所在目录，执行命令安装：python setup.py install
+
+2、执行：xmind2testcase webtool
+
+3、访问：127.0.0.1:5001
