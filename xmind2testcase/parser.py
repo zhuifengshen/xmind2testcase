@@ -144,7 +144,7 @@ def parse_a_testcase(case_dict, parent):
         testcase.steps = parse_test_steps(step_dict_list)
 
     # the result of the testcase take precedence over the result of the teststep
-    testcase.result = get_test_result(case_dict['markers'])
+    testcase.result = get_test_result(case_dict.get('markers', []))
 
     if testcase.result == 0 and testcase.steps:
         for step in testcase.steps:
@@ -162,7 +162,12 @@ def parse_a_testcase(case_dict, parent):
 
 
 def get_execution_type(topics):
-    labels = [topic.get('label', '') for topic in topics]
+    labels = []
+    for topic in topics:
+        label = topic.get('label', '')
+        if label:
+            labels.append(label)
+    
     labels = filter_empty_or_ignore_element(labels)
     exe_type = 1
     for item in labels[::-1]:
@@ -176,11 +181,32 @@ def get_execution_type(topics):
 
 
 def get_priority(case_dict):
-    """Get the topic's priority（equivalent to the importance of the testcase)"""
-    if isinstance(case_dict['markers'], list):
-        for marker in case_dict['markers']:
-            if marker.startswith('priority'):
-                return int(marker[-1])
+    """
+    Get the topic's priority (equivalent to the importance of the testcase)
+    Support both old and new XMind marker formats
+    """
+    markers = case_dict.get('markers', [])
+    if not markers:
+        return None
+        
+    for marker in markers:
+        # Handle new version marker format
+        if isinstance(marker, dict):
+            marker_id = marker.get('markerId', '')
+        else:
+            marker_id = marker
+            
+        if marker_id.startswith('priority'):
+            # Handle possible formats: 'priority-1', 'priority1', etc.
+            try:
+                if '-' in marker_id:
+                    return int(marker_id.split('-')[1])
+                else:
+                    return int(marker_id[-1])
+            except (ValueError, IndexError):
+                logging.warning(f"Cannot parse priority marker: {marker_id}")
+                
+    return None
 
 
 def gen_testcase_title(topics):
@@ -227,10 +253,10 @@ def parse_a_test_step(step_dict):
     if expected_topics:  # have expected result
         expected_topic = expected_topics[0]
         test_step.expectedresults = expected_topic['title']  # one test step action, one test expected result
-        markers = expected_topic['markers']
+        markers = expected_topic.get('markers', [])
         test_step.result = get_test_result(markers)
     else:  # only have test step
-        markers = step_dict['markers']
+        markers = step_dict.get('markers', [])
         test_step.result = get_test_result(markers)
 
     logging.debug('finds a teststep: %s', test_step.to_dict())
@@ -238,27 +264,33 @@ def parse_a_test_step(step_dict):
 
 
 def get_test_result(markers):
-    """test result: non-execution:0, pass:1, failed:2, blocked:3, skipped:4"""
-    if isinstance(markers, list):
-        if 'symbol-right' in markers or 'c_simbol-right' in markers:
-            result = 1
-        elif 'symbol-wrong' in markers or 'c_simbol-wrong' in markers:
-            result = 2
-        elif 'symbol-pause' in markers or 'c_simbol-pause' in markers:
-            result = 3
-        elif 'symbol-minus' in markers or 'c_simbol-minus' in markers:
-            result = 4
+    """
+    Test result: non-execution:0, pass:1, failed:2, blocked:3, skipped:4
+    Support both old and new XMind marker formats
+    """
+    if not isinstance(markers, list) or not markers:
+        return 0
+        
+    # Define marker IDs for different test results
+    pass_markers = ['symbol-right', 'task-done', 'right', 'c_simbol-right']
+    fail_markers = ['symbol-wrong', 'wrong', 'c_simbol-wrong']
+    block_markers = ['symbol-pause', 'pause', 'c_simbol-pause']
+    skip_markers = ['symbol-minus', 'minus', 'c_simbol-minus']
+    
+    for marker in markers:
+        # Handle new version marker format
+        if isinstance(marker, dict):
+            marker_id = marker.get('markerId', '')
         else:
-            result = 0
-    else:
-        result = 0
-
-    return result
-
-
-
-
-
-
-
-
+            marker_id = marker
+            
+        if marker_id in pass_markers:
+            return 1
+        elif marker_id in fail_markers:
+            return 2
+        elif marker_id in block_markers:
+            return 3
+        elif marker_id in skip_markers:
+            return 4
+            
+    return 0
